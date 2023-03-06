@@ -9,21 +9,31 @@
 /* Begin PBXBuildFile section */
 		858D8BAD29B5EB9700B3AFD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858D8BAC29B5EB9700B3AFD0 /* AppDelegate.swift */; };
 		858D8BAF29B5EB9700B3AFD0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858D8BAE29B5EB9700B3AFD0 /* SceneDelegate.swift */; };
-		858D8BB129B5EB9700B3AFD0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858D8BB029B5EB9700B3AFD0 /* ViewController.swift */; };
+		858D8BB129B5EB9700B3AFD0 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858D8BB029B5EB9700B3AFD0 /* StartViewController.swift */; };
 		858D8BB429B5EB9700B3AFD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 858D8BB229B5EB9700B3AFD0 /* Main.storyboard */; };
 		858D8BB629B5EB9E00B3AFD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 858D8BB529B5EB9E00B3AFD0 /* Assets.xcassets */; };
 		858D8BB929B5EB9E00B3AFD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 858D8BB729B5EB9E00B3AFD0 /* LaunchScreen.storyboard */; };
+		858D8BC129B5EC7900B3AFD0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858D8BC029B5EC7900B3AFD0 /* Constants.swift */; };
+		858D8BC429B5F6C700B3AFD0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858D8BC329B5F6C700B3AFD0 /* LoginViewController.swift */; };
+		858D8BC629B5F6DA00B3AFD0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858D8BC529B5F6DA00B3AFD0 /* RegisterViewController.swift */; };
+		858D8BC829B5F6ED00B3AFD0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858D8BC729B5F6ED00B3AFD0 /* ChatViewController.swift */; };
+		858D8BCA29B5F70000B3AFD0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858D8BC929B5F70000B3AFD0 /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		858D8BA929B5EB9700B3AFD0 /* KoalaChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KoalaChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		858D8BAC29B5EB9700B3AFD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		858D8BAE29B5EB9700B3AFD0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		858D8BB029B5EB9700B3AFD0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		858D8BB029B5EB9700B3AFD0 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		858D8BB329B5EB9700B3AFD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		858D8BB529B5EB9E00B3AFD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		858D8BB829B5EB9E00B3AFD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		858D8BBA29B5EB9E00B3AFD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		858D8BC029B5EC7900B3AFD0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		858D8BC329B5F6C700B3AFD0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		858D8BC529B5F6DA00B3AFD0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		858D8BC729B5F6ED00B3AFD0 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		858D8BC929B5F70000B3AFD0 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +68,34 @@
 			children = (
 				858D8BAC29B5EB9700B3AFD0 /* AppDelegate.swift */,
 				858D8BAE29B5EB9700B3AFD0 /* SceneDelegate.swift */,
-				858D8BB029B5EB9700B3AFD0 /* ViewController.swift */,
+				858D8BCB29B5F70500B3AFD0 /* Model */,
+				858D8BC229B5F69900B3AFD0 /* ViewController */,
 				858D8BB229B5EB9700B3AFD0 /* Main.storyboard */,
 				858D8BB529B5EB9E00B3AFD0 /* Assets.xcassets */,
 				858D8BB729B5EB9E00B3AFD0 /* LaunchScreen.storyboard */,
 				858D8BBA29B5EB9E00B3AFD0 /* Info.plist */,
+				858D8BC029B5EC7900B3AFD0 /* Constants.swift */,
 			);
 			path = KoalaChat;
+			sourceTree = "<group>";
+		};
+		858D8BC229B5F69900B3AFD0 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				858D8BB029B5EB9700B3AFD0 /* StartViewController.swift */,
+				858D8BC329B5F6C700B3AFD0 /* LoginViewController.swift */,
+				858D8BC529B5F6DA00B3AFD0 /* RegisterViewController.swift */,
+				858D8BC729B5F6ED00B3AFD0 /* ChatViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		858D8BCB29B5F70500B3AFD0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				858D8BC929B5F70000B3AFD0 /* Message.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +169,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				858D8BB129B5EB9700B3AFD0 /* ViewController.swift in Sources */,
+				858D8BB129B5EB9700B3AFD0 /* StartViewController.swift in Sources */,
 				858D8BAD29B5EB9700B3AFD0 /* AppDelegate.swift in Sources */,
 				858D8BAF29B5EB9700B3AFD0 /* SceneDelegate.swift in Sources */,
+				858D8BC829B5F6ED00B3AFD0 /* ChatViewController.swift in Sources */,
+				858D8BC629B5F6DA00B3AFD0 /* RegisterViewController.swift in Sources */,
+				858D8BCA29B5F70000B3AFD0 /* Message.swift in Sources */,
+				858D8BC429B5F6C700B3AFD0 /* LoginViewController.swift in Sources */,
+				858D8BC129B5EC7900B3AFD0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
