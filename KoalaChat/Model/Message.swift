@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct Message: Identifiable, Codable {
+    var title: String
+    var content: String
+    var sender: User
+    var recipient: User
+    var timestamp = Date()
+    var id = UUID()
+}
