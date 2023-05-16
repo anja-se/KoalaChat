@@ -7,11 +7,9 @@
 
 import Foundation
 
-struct Message: Identifiable, Codable {
-    var title: String
+struct Message: Codable {
     var content: String
-    var sender: User
-    var recipient: User
+    var senderId: String
+    var recipientId: String
     var timestamp = Date()
-    var id = UUID()
 }

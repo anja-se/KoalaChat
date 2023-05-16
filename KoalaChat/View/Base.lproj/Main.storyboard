@@ -165,11 +165,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pm9-qR-yKP">
-                        <barButtonItem key="rightBarButtonItem" title="Add" image="plus" catalog="system" id="Roe-cg-sOj">
-                            <connections>
-                                <segue destination="gEz-Fc-A99" kind="show" id="u9Z-gR-fkV"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Logout" id="eew-Nm-eRd">
+                                <connections>
+                                    <action selector="logoutPressed:" destination="BEi-ly-vNy" id="GND-9c-oFS"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Add" image="plus" catalog="system" id="Roe-cg-sOj">
+                                <connections>
+                                    <segue destination="gEz-Fc-A99" kind="show" id="u9Z-gR-fkV"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="5Io-XP-Jku" id="m7a-ua-ybc"/>
@@ -356,13 +363,7 @@
                             <constraint firstItem="MLv-1N-MDU" firstAttribute="trailing" secondItem="E7A-En-ts5" secondAttribute="trailing" id="zxz-D2-gpt"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Dqk-SV-YEQ">
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="42b-hq-Hfp">
-                            <connections>
-                                <action selector="logoutPressed:" destination="TjE-N4-Pbv" id="nmo-Cf-sws"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Dqk-SV-YEQ"/>
                     <connections>
                         <outlet property="tableView" destination="B5L-pM-jvj" id="kNP-aL-3uQ"/>
                     </connections>
@@ -398,19 +399,19 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="66d-m0-t1K"/>
+        <segue reference="haO-N0-blu"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="paperplane" catalog="system" width="128" height="119"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="CremeBG">
-            <color red="1" green="0.97254901960784312" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.97299998998641968" blue="0.87099999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="GreenAccent">
-            <color red="0.62745098039215685" green="0.84705882352941175" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.62699997425079346" green="0.84700000286102295" blue="0.70200002193450928" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="LightAccent">
-            <color red="0.89803921568627454" green="0.97647058823529409" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89800000190734863" green="0.97600001096725464" blue="0.85900002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

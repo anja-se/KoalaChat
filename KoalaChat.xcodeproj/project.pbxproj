@@ -31,6 +31,8 @@
 		85A8A1A729BA2CE600DBAC15 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 85A8A1A629BA2CE600DBAC15 /* IQKeyboardManagerSwift */; };
 		85A8A1AA29BA362A00DBAC15 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 85A8A1A929BA362A00DBAC15 /* FirebaseAuth */; };
 		85A8A1AC29BA362A00DBAC15 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 85A8A1AB29BA362A00DBAC15 /* FirebaseFirestore */; };
+		85D17B582A12632300D74793 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D17B572A12632300D74793 /* Contact.swift */; };
+		85D17B5A2A136F4700D74793 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D17B592A136F4700D74793 /* ContactManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		8597CBCF2A0D4F75001C5232 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8597CBD12A0D4F93001C5232 /* MessageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRepository.swift; sourceTree = "<group>"; };
 		85A8A1A329BA2B9300DBAC15 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		85D17B572A12632300D74793 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		85D17B592A136F4700D74793 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 				858D8BC029B5EC7900B3AFD0 /* Constants.swift */,
 				8597CBBC2A0A8C9B001C5232 /* AuthService.swift */,
 				8597CBD12A0D4F93001C5232 /* MessageRepository.swift */,
+				85D17B592A136F4700D74793 /* ContactManager.swift */,
 				858D8BCB29B5F70500B3AFD0 /* Model */,
 				858D8BC229B5F69900B3AFD0 /* ViewController */,
 				8597CBC22A0D25CA001C5232 /* View */,
@@ -126,6 +131,7 @@
 			children = (
 				858D8BC929B5F70000B3AFD0 /* Message.swift */,
 				8597CBCF2A0D4F75001C5232 /* User.swift */,
+				85D17B572A12632300D74793 /* Contact.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -229,6 +235,7 @@
 				8597CBD22A0D4F93001C5232 /* MessageRepository.swift in Sources */,
 				8597CBCE2A0D4F11001C5232 /* ContactsViewController.swift in Sources */,
 				8597CBC52A0D260D001C5232 /* MessageCell.swift in Sources */,
+				85D17B582A12632300D74793 /* Contact.swift in Sources */,
 				858D8BAD29B5EB9700B3AFD0 /* AppDelegate.swift in Sources */,
 				858D8BAF29B5EB9700B3AFD0 /* SceneDelegate.swift in Sources */,
 				8597CBBD2A0A8C9B001C5232 /* AuthService.swift in Sources */,
@@ -238,6 +245,7 @@
 				8597CBC92A0D264A001C5232 /* ContactCell.swift in Sources */,
 				858D8BC629B5F6DA00B3AFD0 /* RegisterViewController.swift in Sources */,
 				858D8BCA29B5F70000B3AFD0 /* Message.swift in Sources */,
+				85D17B5A2A136F4700D74793 /* ContactManager.swift in Sources */,
 				858D8BC429B5F6C700B3AFD0 /* LoginViewController.swift in Sources */,
 				858D8BC129B5EC7900B3AFD0 /* Constants.swift in Sources */,
 			);

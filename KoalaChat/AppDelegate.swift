@@ -14,7 +14,11 @@ import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    static let authService = AuthService()
+    static var userId: String? {
+        authService.user?.id
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
