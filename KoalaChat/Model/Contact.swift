@@ -10,4 +10,9 @@ import Foundation
 struct Contact: Codable {
     let id: String
     var name: String
+    var imageURL: String?
+}
+
+protocol ContactDelegate {
+    func update()
 }

@@ -12,6 +12,7 @@ struct K {
     static let registerSegue = "RegisterToChat"
     static let loginSegue = "LoginToChat"
     static let chatSegue = "GoToChat"
+    static let searchSegue = "GoToSearch"
     
     struct FStore {
         static let userCollection = "user"
