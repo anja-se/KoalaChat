@@ -21,7 +21,6 @@ struct ImageStorage {
                     let data = try await URLSession.shared.data(from: url)
                     let image = UIImage(data: data.0)
                     user.image = image
-                    print("setting image for \(user.name)")
                     completion()
                     
                 } catch {
@@ -39,7 +38,6 @@ struct ImageStorage {
                 let data = try await URLSession.shared.data(from: url)
                 let image = UIImage(data: data.0)
                 user.image = image
-                print("setting image for \(user.name)")
                 
             } catch {
                 print("There was an error retrieving image data from url: \(error)")

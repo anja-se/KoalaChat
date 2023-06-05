@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     var chat: Chat?
@@ -24,12 +24,18 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        textField.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: MessageCell.identifier, bundle: nil), forCellReuseIdentifier: MessageCell.identifier)
         chat!.delegate = self
         AppDelegate.user?.chatRepo?.chatDelegate = self
         title = chat!.contact.name
+    }
+    
+    override func viewWillAppear(_ animated: Bool){
+        let indexPath = IndexPath(row: messages.count - 1, section: 0)
+        tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,6 +50,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func sendButtonClicked(_ sender: UIButton) {
+        submit()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        submit()
+        return true
+    }
+    
+    func submit() {
         let createChat = chat!.messages.isEmpty
         if let text = textField.text {
             if !text.isEmpty {
@@ -52,14 +67,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             textField.text = ""
         }
     }
-    
 }
 
 extension ChatViewController: ChatDelegate {
     func update() {
+        let row = messages.count - 1
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            self.tableView.scrollToRow(at: IndexPath(row: row, section: 0), at: .bottom, animated: false)
         }
-        print("reloading table")
     }
 }

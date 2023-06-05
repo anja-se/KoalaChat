@@ -27,7 +27,6 @@ class ChatRepository {
     func loadData(){
         Task{
             //load chats from user
-            print("loading chats for user \(user.id)")
             userRef.child(user.id).child("chatIDs").observe(.childAdded) { (snapshot: DataSnapshot) in
                 guard let id = snapshot.value as? String else {return}
                 let allChats = self.chats.map{ $0.id }
@@ -100,8 +99,6 @@ class ChatRepository {
                     imageStorage.setContactImage(for: newContact!) {
                         self.contactDelegate?.update()
                     }
-                } else {
-                    print("no imageURL for user: \(name)")
                 }
             } else {
                 print("There was an error retrieving contact with id \(id)")
