@@ -17,6 +17,7 @@ class ChatRepository {
     let userRef = Database.database().reference().child("user")
     var contactDelegate: ContactDelegate?
     var chatDelegate: ChatDelegate?
+    let imageStorage = ImageStorage()
 
     init(user: User) {
         self.user = user
@@ -29,6 +30,8 @@ class ChatRepository {
             print("loading chats for user \(user.id)")
             userRef.child(user.id).child("chatIDs").observe(.childAdded) { (snapshot: DataSnapshot) in
                 guard let id = snapshot.value as? String else {return}
+                let allChats = self.chats.map{ $0.id }
+                if allChats.contains(id) {return}
                 self.makeChat(with: id)
             }
         }
@@ -80,7 +83,6 @@ class ChatRepository {
                 let newMessage = Message(content: content, senderId: sender, timestamp: date)
                 self.chats[i].messages.append(newMessage)
                 self.chatDelegate?.update()
-                print("@ChatRepository: Message added for chat \(chatId)")
             }
         }
     }
@@ -94,9 +96,12 @@ class ChatRepository {
                let name = contact["name"] as? String {
                     newContact = Contact(id: id, name: name)
                 if let url = contact["profileImageURL"] as? String {
-                    newContact?.imageURL = url
+                    newContact!.imageURL = url
+                    imageStorage.setContactImage(for: newContact!) {
+                        self.contactDelegate?.update()
+                    }
                 } else {
-                    print("no image for user: \(name)")
+                    print("no imageURL for user: \(name)")
                 }
             } else {
                 print("There was an error retrieving contact with id \(id)")
@@ -104,11 +109,11 @@ class ChatRepository {
         } catch {
             print("There was an error creating snapshot: \(error)")
         }
-
         return newContact
     }
     
     func addContact(_ user: Contact){
+        imageStorage.setContactImage(for: user)
         let newChat = Chat(contact: user, messages: [])
         self.chats.append(newChat)
         contactDelegate?.update()
@@ -122,8 +127,11 @@ class ChatRepository {
             for (id, userData) in userArray {
                 if let user = userData as? [String: Any],
                    let name = user["name"] as? String {
-                    let user = Contact(id: id, name: name)
-                    allUser.append(user)
+                    var contact = Contact(id: id, name: name)
+                    if let url = user["profileImageURL"] as? String {
+                        contact.imageURL = url
+                    }
+                    allUser.append(contact)
                 } else {
                     print("could not load userData or name")
                 }
@@ -141,10 +149,8 @@ class ChatRepository {
     
     func submit(_ content: String, chat: Chat, shouldCreate: Bool = false){
         //let message = Message(content: content, senderId: user.id)
-        print("submitting message")
         let ref = chatRef.child(chat.id)
         if shouldCreate {
-            print("ShouldCreate is true")
             ref.setValue([
                 "members": [user.id, chat.contact.id]
             ])

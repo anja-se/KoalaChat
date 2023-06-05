@@ -13,7 +13,6 @@ class AuthService {
     
     var user: User?
     let userRef = Database.database().reference().child("user")
-    //let allUsers = Firestore.firestore().collection(K.FStore.userCollection)
     
     private let auth = Auth.auth()
     private var listener: AuthStateDidChangeListenerHandle?
@@ -21,8 +20,8 @@ class AuthService {
     init() {
         listener = auth.addStateDidChangeListener({ [weak self] _, user in
             self?.user = user.map(User.init(from:))
+            AppDelegate.user = self?.user
         })
-        
     }
     
     func createAccount(name: String, email: String, password: String) async throws {
@@ -34,23 +33,21 @@ class AuthService {
             "id": id,
             "name": name
         ])
-//        try await allUsers.document(id).setData([K.FStore.userIdField : id, K.FStore.nameField : name, K.FStore.contactIdsField: contacts])
     }
     
-    func signIn(email: String, password: String) async throws {
-        do {
-            try await auth.signIn(withEmail: email, password: password)
-        } catch {
-            print(error.localizedDescription)
+    func signIn(email: String, password: String, completion: @escaping () -> Void) {
+        auth.signIn(withEmail: email, password: password) { (authResult, error) in
+            if let error = error {
+                print("Sign-in error: \(error.localizedDescription)")
+            } else if let _ = authResult {
+                completion()
+            }
         }
     }
     
     func signOut() throws {
         try auth.signOut()
-    }
-    
-    func setContacts(){
-        
+        AppDelegate.user = nil
     }
 }
 

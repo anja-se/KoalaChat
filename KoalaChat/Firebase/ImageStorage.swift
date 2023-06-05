@@ -13,46 +13,52 @@ import UIKit
 struct ImageStorage {
     let userRef = Database.database().reference().child("user")
     
-    func downloadImage(for id: String, completion: @escaping (UIImage?) -> Void) async{
-        let url = await getURL(for: id)
-        if let url {
-            downloadImage(from: url, completion: completion)
+    func setContactImage(for user: Contact, completion: @escaping () -> Void = {}) {
+        Task {
+            if let urlString = user.imageURL, let url =
+                URL(string: urlString) {
+                do {
+                    let data = try await URLSession.shared.data(from: url)
+                    let image = UIImage(data: data.0)
+                    user.image = image
+                    print("setting image for \(user.name)")
+                    completion()
+                    
+                } catch {
+                    print("There was an error retrieving image data from url: \(error)")
+                }
+            }
         }
+        
     }
     
-    func getURL(for id: String) async -> String? {
-        let ref = Database.database().reference().child("user").child(id).child("profileImageURL")
-        var imageURL: String? = nil
+    func setUserImage(for user: User) {
+        Task {
+            guard let url = await getURL(for: user.id) else {return}
+            do {
+                let data = try await URLSession.shared.data(from: url)
+                let image = UIImage(data: data.0)
+                user.image = image
+                print("setting image for \(user.name)")
+                
+            } catch {
+                print("There was an error retrieving image data from url: \(error)")
+            }
+        }
+    }
+
+    func getURL(for id: String) async -> URL? {
+        let ref = userRef.child(id).child("profileImageURL")
+        var imageURL: URL? = nil
         do {
             let snapshot = try await ref.getData()
-            if let url = snapshot.value as? String {
-                imageURL = url
+            if let urlString = snapshot.value as? String {
+                imageURL = URL(string: urlString)
             }
         } catch {
             print("@ImageStorage: There was an error retrieving image url")
         }
         return imageURL
-    }
-    
-    func downloadImage(from url: String, completion: @escaping (UIImage?) -> Void) {
-        if let downloadURL = URL(string: url) {
-            let task = URLSession.shared.dataTask(with: downloadURL) { (data, response, error) in
-                if let error = error {
-                    print("Failed to download image: \(error.localizedDescription)")
-                    return
-                }
-                
-                if let imageData = data, let image = UIImage(data: imageData) {
-                    // Use the downloaded image
-                    DispatchQueue.main.async {
-                        completion(image)
-                    }
-                }
-            }
-            task.resume()
-        } else {
-            completion(nil)
-        }
     }
     
     func uloadImage(_ image: UIImage){

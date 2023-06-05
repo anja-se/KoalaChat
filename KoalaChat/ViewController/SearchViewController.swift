@@ -21,6 +21,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "New Chat"
         tableView.dataSource = self
         tableView.register(UINib(nibName: ContactCell.identifier, bundle: nil), forCellReuseIdentifier: ContactCell.identifier)
         searchView.layer.cornerRadius = 5

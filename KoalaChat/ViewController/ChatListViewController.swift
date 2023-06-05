@@ -7,11 +7,11 @@
 
 import UIKit
 
-class ContactsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pictureButton: UIBarButtonItem!
-    var chats = AppDelegate.user!.chatRepo!.chats
+    var chats = AppDelegate.user!.chatRepo!.chats.sorted()
     var chatIndex = 0
    
     override func viewDidLoad() {
@@ -20,13 +20,13 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.dataSource = self
         tableView.register(UINib(nibName: ContactCell.identifier, bundle: nil), forCellReuseIdentifier: ContactCell.identifier)
         navigationItem.hidesBackButton = true
-        self.title = AppDelegate.user?.name
+        self.title = "Chats"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         AppDelegate.user?.chatRepo?.contactDelegate = self
-        chats = AppDelegate.user!.chatRepo!.chats
+        chats = AppDelegate.user!.chatRepo!.chats.sorted()
         tableView.reloadData()
     }
     
@@ -65,9 +65,9 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
 }
 
 //MARK: Contact Delegate Method
-extension ContactsViewController: ContactDelegate {
+extension ChatListViewController: ContactDelegate {
     func update(){
-        chats = AppDelegate.user!.chatRepo!.chats
+        chats = AppDelegate.user!.chatRepo!.chats.sorted()
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }

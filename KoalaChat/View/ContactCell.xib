@@ -66,11 +66,13 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="SNN-uX-Pkk" firstAttribute="centerY" secondItem="s1o-ls-mzt" secondAttribute="centerY" id="dTW-wI-PBX"/>
                         </constraints>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="s1o-ls-mzt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Eka-fU-H5m"/>
                     <constraint firstAttribute="bottom" secondItem="s1o-ls-mzt" secondAttribute="bottom" constant="10" id="GNb-a8-gEx"/>
@@ -79,6 +81,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="addButton" destination="SNN-uX-Pkk" id="p5R-Yz-0U0"/>
                 <outlet property="imgView" destination="5Gs-Mh-77m" id="Kp0-lK-hBe"/>
@@ -88,7 +91,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="KoalaImage" width="830" height="832"/>
+        <image name="KoalaImage" width="593" height="593"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -11,6 +11,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var tableView: UITableView!
     var chat: Chat?
+    let user = AppDelegate.user
     var messages: [Message] {
         if let chat {
             return chat.messages.sorted { $0.timestamp < $1.timestamp }
@@ -33,7 +34,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MessageCell.identifier, for: indexPath) as! MessageCell
-        let isSender = messages[indexPath.row].senderId == AppDelegate.user!.id
+        let isSender = messages[indexPath.row].senderId == user?.id
         cell.configure(text: messages[indexPath.row].content, sender: isSender)
         return cell
     }

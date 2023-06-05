@@ -15,30 +15,26 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let user = AppDelegate.user {
-            nameLabel.text = user.name
-            
-//            if let imageURL = user.imageURL {
-//                user.imageStorage.downloadImage(from: imageURL, completion: { img in
-//                    if let img {
-//                        self.imageView.image = img
-//                    }
-//                })
-//            }
-        }
-        let radius = imageView.frame.height / 2
-        imageView.layer.cornerRadius = radius
-        imageView.layer.borderColor = UIColor.systemGray5.cgColor
-        imageView.layer.borderWidth = 2
-        imageButton.layer.cornerRadius = radius
+        configure()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let user = AppDelegate.user {
             nameLabel.text = user.name
-            imageView.image = user.image
+            if let image = user.image {
+                imageView.image = image
+            }
         }
+    }
+    
+    func configure(){
+        title = "Profil"
+        let radius = imageView.frame.height / 2
+        imageView.layer.cornerRadius = radius
+        imageView.layer.borderColor = UIColor.systemGray5.cgColor
+        imageView.layer.borderWidth = 2
+        imageButton.layer.cornerRadius = radius
     }
     
     @IBAction func selectImageButtonClicked(_ sender: UIButton) {

@@ -25,20 +25,7 @@ class User: Identifiable, Codable {
         self.id = firebaseUser.uid
         self.name = firebaseUser.displayName ?? "Error: No name"
         self.chatRepo = ChatRepository(user: self)
-        AppDelegate.user = self
-        setImage()
-        
-        
-    }
-    
-    func setImage(){
-        Task{
-            await imageStorage.downloadImage(for: id, completion: { img in
-                if let img {
-                    self.image = img
-                }
-            })
-        }
+        imageStorage.setUserImage(for: self)
     }
     
     func addContact(_ user: Contact) {

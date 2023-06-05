@@ -10,7 +10,7 @@ import UIKit
 class ContactCell: UITableViewCell {
     
     static let identifier = "ContactCell"
-    var user: Contact?
+    var contact: Contact?
 
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -19,6 +19,7 @@ class ContactCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         imgView.layer.cornerRadius = imgView.frame.height/2
+        //imgView.image = UIImage(named: "KoalaImage")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,24 +27,22 @@ class ContactCell: UITableViewCell {
     }
     
     func configure(user: Contact, isAddable: Bool = false) {
-        self.user = user
+        self.contact = user
         nameLabel.text = user.name
         addButton.isHidden = !isAddable
         if isAddable {
             accessoryType = .none
         }
-        if let url = user.imageURL {
-            ImageStorage().downloadImage(from: url, completion: { img in
-                if let img {
-                    self.imgView.image = img
-                }
-            })
+        if let image = user.image {
+            self.imgView.image = image
+        } else {
+            self.imgView.image = UIImage(named: "KoalaImage")
         }
     }
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
-        guard let user else { return }
-        AppDelegate.user!.addContact(user)
+        guard let contact else { return }
+        AppDelegate.user!.addContact(contact)
     }
     
     

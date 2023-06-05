@@ -20,14 +20,14 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    
-    
     @IBAction func registerPressed(_ sender: UIButton) {
         if let username = usernameTextfield.text, let email = emailTextfield.text, let password = passwordTextField.text {
             Task{
                 do {
                     try await authService.createAccount(name: username, email: email, password: password)
-                    self.performSegue(withIdentifier: K.registerSegue, sender: self)
+                    if authService.user != nil {
+                        self.performSegue(withIdentifier: K.registerSegue, sender: self)
+                    }
                 } catch {
                     print(error.localizedDescription)
                 }

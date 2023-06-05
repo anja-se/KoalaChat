@@ -11,6 +11,7 @@ struct K {
     static let appName = "🐨KoalaChat"
     static let registerSegue = "RegisterToChat"
     static let loginSegue = "LoginToChat"
+    static let loggedInSeque = "JumpToMain"
     static let chatSegue = "GoToChat"
     static let searchSegue = "GoToSearch"
     

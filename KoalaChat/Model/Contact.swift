@@ -6,11 +6,23 @@
 //
 
 import Foundation
+import UIKit
 
-struct Contact: Codable {
+class Contact: Codable {
     let id: String
     var name: String
     var imageURL: String?
+    var image: UIImage?
+    
+    init(id: String, name: String, imageURL: String? = nil) {
+        self.id = id
+        self.name = name
+        self.imageURL = imageURL
+    }
+    
+    enum CodingKeys: CodingKey {
+        case id, name, imageURL
+    }
 }
 
 protocol ContactDelegate {

@@ -14,7 +14,6 @@ class Chat {
     var messages: [Message] {
         didSet {
             delegate?.update()
-            print("@Chat.messages.didSet: message data changed")
         }
     }
     
@@ -26,6 +25,16 @@ class Chat {
         }
         self.contact = contact
         self.messages = messages
+    }
+}
+
+extension Chat: Comparable {
+    static func < (lhs: Chat, rhs: Chat) -> Bool {
+        lhs.contact.name < rhs.contact.name
+    }
+    
+    static func == (lhs: Chat, rhs: Chat) -> Bool {
+        lhs.id == rhs.id
     }
 }
 
