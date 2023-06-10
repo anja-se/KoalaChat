@@ -67,8 +67,8 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
 //MARK: Contact Delegate Method
 extension ChatListViewController: ContactDelegate {
     func update(){
-        chats = AppDelegate.user!.chatRepo!.chats.sorted()
         DispatchQueue.main.async {
+            self.chats = AppDelegate.user!.chatRepo!.chats.sorted()
             self.tableView.reloadData()
         }
     }
