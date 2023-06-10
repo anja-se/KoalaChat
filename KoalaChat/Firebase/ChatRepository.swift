@@ -49,8 +49,8 @@ class ChatRepository {
                     return
                 }
                 let contactID = members.first { $0 != self.user.id }
-                if let contactID {
-                    let contact = await self.getContact(with: contactID)
+                if let id = contactID {
+                    let contact = await self.getContact(with: id)
                     guard let contact else {
                         print("could not load contact")
                         return
@@ -141,6 +141,7 @@ class ChatRepository {
         let contactIDs = chats.map { $0.contact.id }
         allUser = allUser.filter({ $0.id != self.user.id && !contactIDs.contains($0.id)
         })
+        
         return allUser
     }
     

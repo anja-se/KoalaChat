@@ -3,7 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -110,20 +110,34 @@
                                     <action selector="loginPressed:" destination="CDX-6h-2d3" eventType="touchUpInside" id="AyA-9l-a1n"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="1c2-HR-acr">
+                                <rect key="frame" x="186.66666666666666" y="282" width="20" height="20"/>
+                            </activityIndicatorView>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="belli@nap.de" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NMD-A9-Nhu">
                                 <rect key="frame" x="50" y="183" width="293" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wh5-wM-VIh">
+                                <rect key="frame" x="16" y="333" width="361" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xvH-eC-9Pk"/>
                         <color key="backgroundColor" red="0.89803921568627454" green="0.97647058823529409" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Wh5-wM-VIh" firstAttribute="leading" secondItem="xvH-eC-9Pk" secondAttribute="leading" constant="16" id="8Nm-Dy-zkR"/>
                             <constraint firstItem="JGK-dW-ogw" firstAttribute="leading" secondItem="xvH-eC-9Pk" secondAttribute="leading" constant="50" id="9kh-Xf-p0n"/>
+                            <constraint firstItem="1c2-HR-acr" firstAttribute="centerY" secondItem="aeu-dU-Ami" secondAttribute="centerY" id="H4e-oa-xXL"/>
+                            <constraint firstItem="1c2-HR-acr" firstAttribute="centerX" secondItem="aeu-dU-Ami" secondAttribute="centerX" id="P8F-OD-DV9"/>
                             <constraint firstItem="NMD-A9-Nhu" firstAttribute="leading" secondItem="xvH-eC-9Pk" secondAttribute="leading" constant="50" id="Tm8-ew-B5h"/>
                             <constraint firstItem="xvH-eC-9Pk" firstAttribute="trailing" secondItem="NMD-A9-Nhu" secondAttribute="trailing" constant="50" id="XA9-EA-kjl"/>
+                            <constraint firstItem="Wh5-wM-VIh" firstAttribute="top" secondItem="aeu-dU-Ami" secondAttribute="bottom" constant="16" id="ann-vr-xhB"/>
                             <constraint firstItem="NMD-A9-Nhu" firstAttribute="centerX" secondItem="gd1-9w-55W" secondAttribute="centerX" id="cSH-e2-dW1"/>
                             <constraint firstItem="NMD-A9-Nhu" firstAttribute="top" secondItem="xvH-eC-9Pk" secondAttribute="top" constant="80" id="do7-Ov-jaW"/>
+                            <constraint firstItem="xvH-eC-9Pk" firstAttribute="trailing" secondItem="Wh5-wM-VIh" secondAttribute="trailing" constant="16" id="fnF-xu-LoQ"/>
                             <constraint firstItem="aeu-dU-Ami" firstAttribute="leading" secondItem="xvH-eC-9Pk" secondAttribute="leading" id="mZs-Mt-HV8"/>
                             <constraint firstItem="aeu-dU-Ami" firstAttribute="trailing" secondItem="xvH-eC-9Pk" secondAttribute="trailing" id="qhU-E6-1IU"/>
                             <constraint firstItem="aeu-dU-Ami" firstAttribute="top" secondItem="JGK-dW-ogw" secondAttribute="bottom" constant="8" symbolic="YES" id="tF0-7Y-Q7e"/>
@@ -133,14 +147,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="HYA-8N-3BA"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="1c2-HR-acr" id="sEf-ge-hvO"/>
                         <outlet property="emailTextfield" destination="NMD-A9-Nhu" id="EWQ-55-3z7"/>
+                        <outlet property="infoLabel" destination="Wh5-wM-VIh" id="ure-JE-L4E"/>
+                        <outlet property="loginButton" destination="aeu-dU-Ami" id="Bee-Qs-1xR"/>
                         <outlet property="passwordTextfield" destination="JGK-dW-ogw" id="7cz-vq-U6o"/>
                         <segue destination="BEi-ly-vNy" kind="show" identifier="LoginToChat" id="66d-m0-t1K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w53-xL-oKe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2042" y="-420"/>
+            <point key="canvasLocation" x="2041.9847328244275" y="-420.42253521126764"/>
         </scene>
         <!--Chat List View Controller-->
         <scene sceneID="9kA-4r-e6z">
@@ -237,6 +254,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3w5-Hm-FqB">
+                                <rect key="frame" x="16" y="375" width="361" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="5nD-6L-8ne">
+                                <rect key="frame" x="186.66666666666666" y="324" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mJQ-AV-n80"/>
                         <color key="backgroundColor" name="LightAccent"/>
@@ -246,11 +272,16 @@
                             <constraint firstItem="z9f-Qi-dxR" firstAttribute="top" secondItem="sM0-Uu-Ogi" secondAttribute="bottom" constant="8" symbolic="YES" id="7rV-oN-5bi"/>
                             <constraint firstItem="mJQ-AV-n80" firstAttribute="trailing" secondItem="z9f-Qi-dxR" secondAttribute="trailing" constant="50" id="9xo-Gh-KaL"/>
                             <constraint firstItem="mJQ-AV-n80" firstAttribute="trailing" secondItem="sM0-Uu-Ogi" secondAttribute="trailing" constant="50" id="GUf-Hf-6z1"/>
+                            <constraint firstItem="5nD-6L-8ne" firstAttribute="centerY" secondItem="xFQ-g6-t0O" secondAttribute="centerY" id="O8V-6H-Rkx"/>
                             <constraint firstItem="z9f-Qi-dxR" firstAttribute="leading" secondItem="mJQ-AV-n80" secondAttribute="leading" constant="50" id="QF1-tg-GNf"/>
                             <constraint firstItem="mJQ-AV-n80" firstAttribute="trailing" secondItem="xFQ-g6-t0O" secondAttribute="trailing" id="U3R-bs-bRi"/>
                             <constraint firstItem="IVH-T4-oTu" firstAttribute="top" secondItem="z9f-Qi-dxR" secondAttribute="bottom" constant="8" symbolic="YES" id="UzK-jF-bHS"/>
                             <constraint firstItem="mJQ-AV-n80" firstAttribute="trailing" secondItem="IVH-T4-oTu" secondAttribute="trailing" constant="50" id="Zkz-ON-4r2"/>
                             <constraint firstItem="sM0-Uu-Ogi" firstAttribute="leading" secondItem="mJQ-AV-n80" secondAttribute="leading" constant="50" id="bkb-FZ-mY9"/>
+                            <constraint firstItem="3w5-Hm-FqB" firstAttribute="top" secondItem="xFQ-g6-t0O" secondAttribute="bottom" constant="16" id="nE2-It-OyW"/>
+                            <constraint firstItem="3w5-Hm-FqB" firstAttribute="leading" secondItem="mJQ-AV-n80" secondAttribute="leading" constant="16" id="nIF-dn-7lY"/>
+                            <constraint firstItem="5nD-6L-8ne" firstAttribute="centerX" secondItem="xFQ-g6-t0O" secondAttribute="centerX" id="nIL-bG-737"/>
+                            <constraint firstItem="mJQ-AV-n80" firstAttribute="trailing" secondItem="3w5-Hm-FqB" secondAttribute="trailing" constant="16" id="osj-tx-Ebv"/>
                             <constraint firstItem="xFQ-g6-t0O" firstAttribute="leading" secondItem="mJQ-AV-n80" secondAttribute="leading" id="v4h-mS-7Lf"/>
                             <constraint firstItem="xFQ-g6-t0O" firstAttribute="centerX" secondItem="qMy-qP-ykk" secondAttribute="centerX" id="yKa-6w-dUQ"/>
                             <constraint firstItem="IVH-T4-oTu" firstAttribute="leading" secondItem="mJQ-AV-n80" secondAttribute="leading" constant="50" id="yTe-3h-YJO"/>
@@ -258,8 +289,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="Vec-6d-2dP"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="5nD-6L-8ne" id="gI0-Un-PnG"/>
                         <outlet property="emailTextfield" destination="z9f-Qi-dxR" id="WmE-qh-OtC"/>
+                        <outlet property="infoLabel" destination="3w5-Hm-FqB" id="XVy-DH-2vJ"/>
                         <outlet property="passwordTextField" destination="IVH-T4-oTu" id="PA5-9u-Q3V"/>
+                        <outlet property="registerButton" destination="xFQ-g6-t0O" id="7Om-4j-JnP"/>
                         <outlet property="usernameTextfield" destination="sM0-Uu-Ogi" id="hAJ-i4-XWs"/>
                         <segue destination="BEi-ly-vNy" kind="show" identifier="RegisterToChat" id="haO-N0-blu"/>
                     </connections>

@@ -13,25 +13,57 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var usernameTextfield: UITextField!
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var registerButton: UIButton!
     
     private let authService = AuthService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.isHidden = true
     }
     
     @IBAction func registerPressed(_ sender: UIButton) {
         if let username = usernameTextfield.text, let email = emailTextfield.text, let password = passwordTextField.text {
-            Task{
-                do {
-                    try await authService.createAccount(name: username, email: email, password: password)
-                    if authService.user != nil {
-                        self.performSegue(withIdentifier: K.registerSegue, sender: self)
+            startLoading()
+            authService.createAccount(name: username, email: email, password: password) { success, error in
+                DispatchQueue.main.async {
+                    if success {
+                        
+                            self.performSegue(withIdentifier: K.registerSegue, sender: self)
+                            self.stopLoading()
+                            self.infoLabel.isHidden = true
+                        
+                    } else {
+                        self.infoLabel.isHidden = false
+                        self.infoLabel.text = error?.localizedDescription
+                        self.stopLoading()
                     }
-                } catch {
-                    print(error.localizedDescription)
                 }
             }
+//            Task{
+//                do {
+//                    try await authService.createAccount(name: username, email: email, password: password)
+//                    if authService.user != nil {
+//                        self.performSegue(withIdentifier: K.registerSegue, sender: self)
+//                    }
+//                } catch {
+//                    print(error.localizedDescription)
+//                }
+//            }
         }
+    }
+    
+    func startLoading() {
+        registerButton.isHidden = true
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+    }
+    
+    func stopLoading() {
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
+        registerButton.isHidden = false
     }
 }

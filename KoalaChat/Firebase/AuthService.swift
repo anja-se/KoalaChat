@@ -24,23 +24,50 @@ class AuthService {
         })
     }
     
-    func createAccount(name: String, email: String, password: String) async throws {
-        let result = try await auth.createUser(withEmail: email, password: password)
-        try await result.user.updateProfile(\.displayName, to: name)
-        let id = result.user.uid
-        //let contacts: [String] = []
-        try await userRef.child(id).setValue([
-            "id": id,
-            "name": name
-        ])
+    func createAccount(name: String, email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+        auth.createUser(withEmail: email, password: password) { (authResult, error) in
+            if let error = error {
+                print("Sign-up error: \(error.localizedDescription)")
+                completion(false, error)
+            } else if let result = authResult {
+                Task {
+                    do {
+                        try await result.user.updateProfile(\.displayName, to: name)
+                        let id = result.user.uid
+                        try await self.userRef.child(id).setValue([
+                            "id": id,
+                            "name": name
+                        ])
+                        completion(true, nil)
+                    } catch {
+                        print("Sign-up error: \(error.localizedDescription)")
+                        completion(false, error)
+                    }
+                }
+                
+            }
+        }
     }
+        
+        
+        
+//        let result = try await auth.createUser(withEmail: email, password: password)
+//        try await result.user.updateProfile(\.displayName, to: name)
+//        let id = result.user.uid
+//        //let contacts: [String] = []
+//        try await userRef.child(id).setValue([
+//            "id": id,
+//            "name": name
+//        ])
+//    }
     
-    func signIn(email: String, password: String, completion: @escaping () -> Void) {
+    func signIn(email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
         auth.signIn(withEmail: email, password: password) { (authResult, error) in
             if let error = error {
                 print("Sign-in error: \(error.localizedDescription)")
+                completion(false, error)
             } else if let _ = authResult {
-                completion()
+                completion(true, nil)
             }
         }
     }
