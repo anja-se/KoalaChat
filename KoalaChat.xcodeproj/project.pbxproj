@@ -37,7 +37,6 @@
 		D32AB0DC2A1FBAEE004899C2 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D32AB0DB2A1FBAEE004899C2 /* FirebaseDatabaseSwift */; };
 		D32AB0DE2A20ACD7004899C2 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32AB0DD2A20ACD7004899C2 /* Chat.swift */; };
 		D32AB0E02A20D629004899C2 /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32AB0DF2A20D629004899C2 /* ChatRepository.swift */; };
-		D33386C62A261DE800A4A8F4 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33386C52A261DE800A4A8F4 /* StartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +66,6 @@
 		D314F00B2A277F1500B4B4FD /* ImageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorage.swift; sourceTree = "<group>"; };
 		D32AB0DD2A20ACD7004899C2 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		D32AB0DF2A20D629004899C2 /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
-		D33386C52A261DE800A4A8F4 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +123,6 @@
 		858D8BC229B5F69900B3AFD0 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D33386C52A261DE800A4A8F4 /* StartViewController.swift */,
 				858D8BC329B5F6C700B3AFD0 /* LoginViewController.swift */,
 				858D8BC529B5F6DA00B3AFD0 /* RegisterViewController.swift */,
 				858D8BC729B5F6ED00B3AFD0 /* ChatViewController.swift */,
@@ -265,7 +262,6 @@
 				8597CBCE2A0D4F11001C5232 /* ChatListViewController.swift in Sources */,
 				8597CBC52A0D260D001C5232 /* MessageCell.swift in Sources */,
 				85D17B582A12632300D74793 /* Contact.swift in Sources */,
-				D33386C62A261DE800A4A8F4 /* StartViewController.swift in Sources */,
 				D32AB0E02A20D629004899C2 /* ChatRepository.swift in Sources */,
 				858D8BAD29B5EB9700B3AFD0 /* AppDelegate.swift in Sources */,
 				D314F0082A2760AC00B4B4FD /* ProfileViewController.swift in Sources */,

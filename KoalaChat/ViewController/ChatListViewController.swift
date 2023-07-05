@@ -11,7 +11,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pictureButton: UIBarButtonItem!
-    var chats = AppDelegate.user!.chatRepo!.chats.sorted()
+    var chats = [Chat]()
     var chatIndex = 0
    
     override func viewDidLoad() {
@@ -30,6 +30,9 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.reloadData()
     }
     
+
+    
+    //MARK: - Navigation
     @IBAction func logoutPressed(_ sender: UIBarButtonItem) {
         do {
             try AppDelegate.authService.signOut()
@@ -39,7 +42,6 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.chatSegue {
             let vc = segue.destination as! ChatViewController
@@ -47,7 +49,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    //MARK: TableViewDelegate Methods
+    //MARK: - TableViewDelegate Methods
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ContactCell.identifier, for: indexPath) as! ContactCell
         cell.configure(user: chats[indexPath.row].contact)
@@ -64,7 +66,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     }
 }
 
-//MARK: Contact Delegate Method
+//MARK: - Contact Delegate Method
 extension ChatListViewController: ContactDelegate {
     func update(){
         DispatchQueue.main.async {

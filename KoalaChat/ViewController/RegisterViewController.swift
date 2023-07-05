@@ -42,16 +42,6 @@ class RegisterViewController: UIViewController {
                     }
                 }
             }
-//            Task{
-//                do {
-//                    try await authService.createAccount(name: username, email: email, password: password)
-//                    if authService.user != nil {
-//                        self.performSegue(withIdentifier: K.registerSegue, sender: self)
-//                    }
-//                } catch {
-//                    print(error.localizedDescription)
-//                }
-//            }
         }
     }
     

@@ -25,7 +25,7 @@ class ChatRepository {
     }
     
     func loadData(){
-        Task{
+        
             //load chats from user
             userRef.child(user.id).child("chatIDs").observe(.childAdded) { (snapshot: DataSnapshot) in
                 guard let id = snapshot.value as? String else {return}
@@ -33,7 +33,7 @@ class ChatRepository {
                 if allChats.contains(id) {return}
                 self.makeChat(with: id)
             }
-        }
+        
     }
     
     func makeChat(with chatID: String){
@@ -57,8 +57,10 @@ class ChatRepository {
                     }
                     //create chat
                     let chat = Chat(id: chatID, contact: contact, messages: [])
-                    self.chats.append(chat)
-                    contactDelegate?.update()
+                    DispatchQueue.main.async { [weak self] in
+                        self?.chats.append(chat)
+                        self?.contactDelegate?.update()
+                    }
                 }
                 
                 //get messages
@@ -124,7 +126,7 @@ class ChatRepository {
             for (id, userData) in userArray {
                 if let user = userData as? [String: Any],
                    let name = user["name"] as? String {
-                    var contact = Contact(id: id, name: name)
+                    let contact = Contact(id: id, name: name)
                     if let url = user["profileImageURL"] as? String {
                         contact.imageURL = url
                     }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class ChatViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     var chat: Chat?
@@ -20,17 +20,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
     }
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textField.delegate = self
-        tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: MessageCell.identifier, bundle: nil), forCellReuseIdentifier: MessageCell.identifier)
         chat!.delegate = self
         AppDelegate.user?.chatRepo?.chatDelegate = self
-        title = chat!.contact.name
+        configure()
     }
     
     override func viewWillAppear(_ animated: Bool){
@@ -39,6 +37,17 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
         }
     }
+    
+    func configure(){
+        title = chat!.contact.name
+        
+        textView.layer.borderWidth = 1
+        textView.layer.borderColor = UIColor.systemGray5.cgColor
+        textView.layer.cornerRadius = 8
+        textView.sizeToFit()
+    }
+    
+    //MARK: - TableView dataSource methods
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MessageCell.identifier, for: indexPath) as! MessageCell
@@ -54,23 +63,19 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func sendButtonClicked(_ sender: UIButton) {
         submit()
     }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        submit()
-        return true
-    }
-    
+
     func submit() {
         let createChat = chat!.messages.isEmpty
-        if let text = textField.text {
+        if let text = textView.text {
             if !text.isEmpty {
                 AppDelegate.user!.chatRepo?.submit(text, chat: chat!, shouldCreate: createChat)
             }
-            textField.text = ""
+            textView.text = ""
         }
     }
 }
 
+//MARK: - ChatDelegate methods
 extension ChatViewController: ChatDelegate {
     func update() {
         let row = messages.count - 1

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SearchViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -42,7 +42,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-
+    //MARK: - TableView data source methods
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ContactCell.identifier, for: indexPath) as! ContactCell
         cell.configure(user: displayUser[indexPath.row], isAddable: true)
@@ -53,6 +53,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return displayUser.count
     }
     
+    //MARK: - TextField methods
     @IBAction func searchTextChanged(_ sender: UITextField) {
         if let searchText {
             if !searchText.isEmpty {
@@ -67,6 +68,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 }
 
+
+//MARK: - ContactDelegate methods
 extension SearchViewController: ContactDelegate {
     func update() {
         Task {

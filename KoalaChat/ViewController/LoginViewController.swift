@@ -27,7 +27,6 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     
-    
     @IBAction func loginPressed(_ sender: UIButton) {
         if let email = emailTextfield.text, let password = passwordTextfield.text {
             startLoading()
