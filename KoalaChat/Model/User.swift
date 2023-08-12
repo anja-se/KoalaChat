@@ -11,7 +11,7 @@ import UIKit
 
 class User: Identifiable, Codable {
     let id: String
-    let name: String
+    var name: String
     var imageURL: String?
     var image: UIImage?
     var chatRepo: ChatRepository?
@@ -23,7 +23,7 @@ class User: Identifiable, Codable {
     
     init(from firebaseUser: FirebaseAuth.User) {
         self.id = firebaseUser.uid
-        self.name = firebaseUser.displayName ?? "Error: No name"
+        self.name = firebaseUser.displayName ?? "No name"
         self.chatRepo = ChatRepository(user: self)
         imageStorage.setUserImage(for: self)
     }

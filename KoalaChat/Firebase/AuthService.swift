@@ -38,6 +38,7 @@ class AuthService {
                             "id": id,
                             "name": name
                         ])
+                        await AppDelegate.user?.name = name
                         completion(true, nil)
                     } catch {
                         print("Sign-up error: \(error.localizedDescription)")
@@ -48,18 +49,6 @@ class AuthService {
             }
         }
     }
-        
-        
-        
-//        let result = try await auth.createUser(withEmail: email, password: password)
-//        try await result.user.updateProfile(\.displayName, to: name)
-//        let id = result.user.uid
-//        //let contacts: [String] = []
-//        try await userRef.child(id).setValue([
-//            "id": id,
-//            "name": name
-//        ])
-//    }
     
     func signIn(email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
         auth.signIn(withEmail: email, password: password) { (authResult, error) in
