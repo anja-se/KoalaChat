@@ -445,15 +445,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="B5L-pM-jvj">
-                                <rect key="frame" x="0.0" y="103" width="393" height="639"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="B5L-pM-jvj">
+                                <rect key="frame" x="0.0" y="106" width="393" height="543"/>
                                 <color key="backgroundColor" name="CremeBG"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="1000" id="zSi-Vq-p0T"/>
-                                </constraints>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MLv-1N-MDU">
-                                <rect key="frame" x="0.0" y="742" width="393" height="110"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MLv-1N-MDU">
+                                <rect key="frame" x="0.0" y="657" width="393" height="110"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghJ-WW-ACM">
                                         <rect key="frame" x="333" y="20" width="40" height="40"/>
@@ -496,21 +493,19 @@
                         <viewLayoutGuide key="safeArea" id="E7A-En-ts5"/>
                         <color key="backgroundColor" name="GreenAccent"/>
                         <constraints>
-                            <constraint firstItem="B5L-pM-jvj" firstAttribute="leading" secondItem="E7A-En-ts5" secondAttribute="leading" id="3sv-hN-uH9"/>
-                            <constraint firstAttribute="bottom" secondItem="MLv-1N-MDU" secondAttribute="bottom" id="Kto-zc-XWo"/>
-                            <constraint firstItem="MLv-1N-MDU" firstAttribute="top" secondItem="B5L-pM-jvj" secondAttribute="bottom" id="ZVC-2Z-09c"/>
-                            <constraint firstItem="MLv-1N-MDU" firstAttribute="leading" secondItem="E7A-En-ts5" secondAttribute="leading" id="cG6-mk-TNt"/>
-                            <constraint firstItem="B5L-pM-jvj" firstAttribute="top" secondItem="E7A-En-ts5" secondAttribute="top" id="iko-vT-9mZ"/>
-                            <constraint firstItem="B5L-pM-jvj" firstAttribute="trailing" secondItem="E7A-En-ts5" secondAttribute="trailing" id="pA2-SM-nbL"/>
-                            <constraint firstItem="MLv-1N-MDU" firstAttribute="trailing" secondItem="E7A-En-ts5" secondAttribute="trailing" id="zxz-D2-gpt"/>
+                            <constraint firstItem="E7A-En-ts5" firstAttribute="trailing" secondItem="B5L-pM-jvj" secondAttribute="trailing" id="00K-6K-wB6"/>
+                            <constraint firstItem="B5L-pM-jvj" firstAttribute="top" secondItem="E7A-En-ts5" secondAttribute="top" id="EKO-eR-GkE"/>
+                            <constraint firstItem="MLv-1N-MDU" firstAttribute="top" secondItem="B5L-pM-jvj" secondAttribute="bottom" id="JSb-0N-aoH"/>
+                            <constraint firstItem="B5L-pM-jvj" firstAttribute="leading" secondItem="E7A-En-ts5" secondAttribute="leading" id="RIy-w5-n7Q"/>
+                            <constraint firstItem="MLv-1N-MDU" firstAttribute="trailing" secondItem="E7A-En-ts5" secondAttribute="trailing" id="iGV-00-c5H"/>
+                            <constraint firstItem="MLv-1N-MDU" firstAttribute="leading" secondItem="E7A-En-ts5" secondAttribute="leading" id="pJo-Jm-wJd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Dqk-SV-YEQ"/>
                     <connections>
-                        <outlet property="tableView" destination="B5L-pM-jvj" id="kNP-aL-3uQ"/>
-                        <outlet property="tableViewHeightContraint" destination="zSi-Vq-p0T" id="UkN-RG-7qd"/>
-                        <outlet property="tableViewTopContraint" destination="iko-vT-9mZ" id="a0O-oa-HJL"/>
-                        <outlet property="textView" destination="QM6-Cj-WKs" id="SZP-po-wpr"/>
+                        <outlet property="tableView" destination="B5L-pM-jvj" id="72B-yU-CVh"/>
+                        <outlet property="textField" destination="QM6-Cj-WKs" id="SZP-po-wpr"/>
+                        <outlet property="textView" destination="MLv-1N-MDU" id="N2I-ib-VDJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M2o-9T-0C0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

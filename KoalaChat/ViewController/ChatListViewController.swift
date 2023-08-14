@@ -16,11 +16,12 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Chats"
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: ContactCell.identifier, bundle: nil), forCellReuseIdentifier: ContactCell.identifier)
         navigationItem.hidesBackButton = true
-        self.title = "Chats"
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

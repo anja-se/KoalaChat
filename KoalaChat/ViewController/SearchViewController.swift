@@ -22,6 +22,7 @@ class SearchViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "New Chat"
+        self.hideKeyboardWhenTappedAround()
         tableView.dataSource = self
         tableView.register(UINib(nibName: ContactCell.identifier, bundle: nil), forCellReuseIdentifier: ContactCell.identifier)
         searchView.layer.cornerRadius = 5
