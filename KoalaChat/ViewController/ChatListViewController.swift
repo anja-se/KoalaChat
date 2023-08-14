@@ -27,8 +27,10 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         AppDelegate.user?.chatRepo?.contactDelegate = self
-        chats = AppDelegate.user!.chatRepo!.chats.sorted()
-        tableView.reloadData()
+        if let chats = AppDelegate.user?.chatRepo?.chats {
+            self.chats = chats.sorted()
+            tableView.reloadData()
+        }
     }
     
 

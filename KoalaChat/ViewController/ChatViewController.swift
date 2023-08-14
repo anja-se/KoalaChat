@@ -118,6 +118,7 @@ extension ChatViewController: ChatDelegate {
 extension ChatViewController {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            self.bottomConstraint?.isActive = false
             self.bottomConstraint = self.textView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -keyboardSize.height)
             self.bottomConstraint?.isActive = true
         }

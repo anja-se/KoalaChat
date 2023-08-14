@@ -9,7 +9,6 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageButton: UIButton!
     
@@ -20,16 +19,13 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let user = AppDelegate.user {
-            nameLabel.text = user.name
-            if let image = user.image {
-                imageView.image = image
-            }
+        if let image = AppDelegate.user?.image {
+            imageView.image = image
         }
     }
     
     func configure(){
-        title = "Profil"
+        title = AppDelegate.user!.name
         let radius = imageView.frame.height / 2
         imageView.layer.cornerRadius = radius
         imageView.layer.borderColor = UIColor.systemGray5.cgColor

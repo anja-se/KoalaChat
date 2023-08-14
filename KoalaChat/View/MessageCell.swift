@@ -36,13 +36,13 @@ class MessageCell: UITableViewCell {
     func configure(text: String, sender: Bool){
         label.text = text
         if sender {
-            messageBubble.backgroundColor = UIColor(named: "LightAccent")
+            messageBubble.backgroundColor = UIColor(named: "Bubble1")
             contactLeft?.isActive = false
             contactRight?.isActive = false
             senderLeft?.isActive = true
             senderRight?.isActive = true
         } else {
-            messageBubble.backgroundColor = UIColor.white
+            messageBubble.backgroundColor = UIColor(named: "Bubble2")
             senderLeft?.isActive = false
             senderRight?.isActive = false
             contactLeft?.isActive = true
