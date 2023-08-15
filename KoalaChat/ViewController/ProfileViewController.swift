@@ -25,7 +25,9 @@ class ProfileViewController: UIViewController {
     }
     
     func configure(){
-        title = AppDelegate.user!.name
+        if let user = AppDelegate.user {
+            title = user.name
+        }
         let radius = imageView.frame.height / 2
         imageView.layer.cornerRadius = radius
         imageView.layer.borderColor = UIColor.systemGray5.cgColor

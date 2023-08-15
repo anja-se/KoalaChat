@@ -107,9 +107,11 @@ extension ChatViewController: UITableViewDataSource {
 extension ChatViewController: ChatDelegate {
     func update() {
         let row = messages.count - 1
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-            self.tableView.scrollToRow(at: IndexPath(row: row, section: 0), at: .bottom, animated: false)
+        if row >= 0 {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.tableView.scrollToRow(at: IndexPath(row: row, section: 0), at: .bottom, animated: false)
+            }
         }
     }
 }
@@ -125,8 +127,12 @@ extension ChatViewController {
     }
     
     @objc func keyboardDidShow(notification: NSNotification) {
-        let row = messages.count - 1
-        self.tableView.scrollToRow(at: IndexPath(row: row, section: 0), at: .bottom, animated: true)
+        if messages.count > 0 {
+            let row = messages.count - 1
+            if row >= 0 {
+                tableView.scrollToRow(at: IndexPath(row: row, section: 0), at: .bottom, animated: true)
+            }
+        }
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
