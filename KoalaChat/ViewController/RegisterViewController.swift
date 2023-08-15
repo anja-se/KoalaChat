@@ -17,7 +17,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var registerButton: UIButton!
     
-    private let authService = AuthService()
+    private let authService = AppDelegate.authService
     
     override func viewDidLoad() {
         super.viewDidLoad()

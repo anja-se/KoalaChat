@@ -41,7 +41,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
             try AppDelegate.authService.signOut()
             navigationController?.popViewController(animated: true)
         } catch {
-            print(error)
+            print("There was an error logging out: \(error)")
         }
     }
     

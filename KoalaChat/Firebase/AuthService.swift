@@ -21,6 +21,8 @@ class AuthService {
         listener = auth.addStateDidChangeListener({ [weak self] _, user in
             self?.user = user.map(User.init(from:))
             AppDelegate.user = self?.user
+//            Debug:
+//            print("state did change. User is: \(AppDelegate.user?.name ?? "nil")")
         })
     }
     
